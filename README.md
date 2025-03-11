@@ -121,16 +121,6 @@ base_url = "https://api.openai.com/v1"
 api_key = "sk-..."  # Replace with your actual API key
 ```
 
-## Quick Start
-
-One line for run OpenManus:
-
-```bash
-python main.py --web
-```
-
-Then input your idea via terminal!
-
 ### Web Interface
 
 You can also use OpenManus through a user-friendly web interface:
@@ -141,6 +131,21 @@ uvicorn app.web.app:app --reload
 or
 ```bash
 python web_run.py
+```
+
+
+## Quick Start terminal
+
+One line for run OpenManus:
+
+```bash
+python main.py
+```
+
+Then input your idea via terminal!
+
+```bash
+python main.py --web
 ```
 
 Then open your browser and navigate to `http://localhost:8000` to access the web interface. The web UI allows you to:
