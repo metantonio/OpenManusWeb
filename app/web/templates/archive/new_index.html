@@ -208,7 +208,7 @@
             line-height: 1.4;
         }
 
-        /* 工作区文件部分 */
+        /* Workspace documents部分 */
         .workspace-section {
             border-top: 1px solid var(--border-color);
             padding-top: 15px;
@@ -465,27 +465,27 @@
     <div class="container">
         <header>
             <h1>OpenManus <span class="emoji">🐱</span></h1>
-            <p class="subtitle">AI智能助手 - 网页版</p>
+            <p class="subtitle">AI Intelligent Assistant Web Version</p>
         </header>
 
         <main>
             <div class="panel-container">
-                <!-- 左侧面板 - 处理进度 -->
+                <!-- 左侧面板 - Processing Progress -->
                 <div class="panel left-panel">
-                    <h2>处理进度</h2>
+                    <h2>Processing Progress</h2>
 
                     <div class="thinking-section">
                         <div class="section-header">
-                            <h3>AI思考过程</h3>
-                            <div class="record-count">0 条记录</div>
+                            <h3>AI Thinking</h3>
+                            <div class="record-count">0 records</div>
                         </div>
 
                         <div class="controls">
                             <label class="auto-scroll">
                                 <input type="checkbox" id="auto-scroll" checked>
-                                <span>自动滚动</span>
+                                <span>Auto-scrolling</span>
                             </label>
-                            <button id="clear-thinking" class="btn-clear">清空</button>
+                            <button id="clear-thinking" class="btn-clear">Empty</button>
                         </div>
 
                         <div id="thinking-timeline" class="thinking-timeline">
@@ -494,14 +494,14 @@
                     </div>
 
                     <div class="workspace-section">
-                        <h3>工作区文件</h3>
+                        <h3>Workspace documents</h3>
                         <div class="refresh-info">
-                            <span>5秒后刷新</span>
-                            <button id="refresh-files" class="btn-refresh">刷新</button>
+                            <span>after 5 seconds Refresh</span>
+                            <button id="refresh-files" class="btn-refresh">Refresh</button>
                         </div>
 
                         <div id="workspace-files" class="workspace-files">
-                            <!-- 工作区文件将在JS中动态添加 -->
+                            <!-- Workspace documents将在JS中动态添加 -->
                         </div>
                     </div>
 
@@ -515,16 +515,16 @@
 
                 <!-- 右侧面板 - 对话 -->
                 <div class="panel right-panel">
-                    <h2>对话</h2>
+                    <h2>Chat</h2>
 
                     <div id="chat-messages" class="chat-messages">
                         <!-- 聊天消息将在JS中动态添加 -->
                     </div>
 
                     <div class="input-area">
-                        <textarea id="user-input" placeholder="输入您的问题或指令..."></textarea>
+                        <textarea id="user-input" placeholder="Write a task..."></textarea>
                         <div class="button-group">
-                            <button id="send-btn" class="btn-send">发送</button>
+                            <button id="send-btn" class="btn-send">S</button>
                             <button id="stop-btn" class="btn-stop">停止</button>
                             <button id="clear-btn" class="btn-clear">清除</button>
                         </div>

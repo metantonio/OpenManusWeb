@@ -1,4 +1,4 @@
-// new_thinkingManager.js - 处理AI思考过程显示
+// new_thinkingManager.js - 处理AI Thinking显示
 
 export class ThinkingManager {
     constructor() {
@@ -25,7 +25,7 @@ export class ThinkingManager {
         // 更新记录计数
         this.updateRecordCount();
 
-        // 如果启用了自动滚动，滚动到底部
+        // 如果启用了Auto-scrolling，滚动到底部
         if (this.autoScrollCheckbox.checked) {
             this.scrollToBottom();
         }
@@ -136,7 +136,7 @@ export class ThinkingManager {
     // 更新记录计数
     updateRecordCount() {
         if (this.recordCountElement) {
-            this.recordCountElement.textContent = `${this.thinkingSteps.length} 条记录`;
+            this.recordCountElement.textContent = `${this.thinkingSteps.length} records`;
         }
     }
 

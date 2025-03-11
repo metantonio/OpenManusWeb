@@ -34,7 +34,7 @@ class App {
         this.workspaceManager.init();
         this.fileViewerManager.init();
 
-        // 加载工作区文件
+        // 加载Workspace documents
         this.loadWorkspaceFiles();
     }
 
@@ -57,7 +57,7 @@ class App {
             this.thinkingManager.clearThinking();
         });
 
-        // 刷新文件按钮
+        // Refresh文件按钮
         document.getElementById('refresh-files').addEventListener('click', () => {
             this.loadWorkspaceFiles();
         });
@@ -160,7 +160,7 @@ class App {
             console.log('收到聊天日志:', data.chat_logs);
         }
 
-        // 如果处理完成，刷新工作区文件
+        // 如果处理完成，RefreshWorkspace documents
         if (data.status === 'completed') {
             setTimeout(() => this.loadWorkspaceFiles(), 1000);
         }
@@ -192,7 +192,7 @@ class App {
         }
     }
 
-    // 加载工作区文件
+    // 加载Workspace documents
     async loadWorkspaceFiles() {
         try {
             const response = await fetch('/api/files');
@@ -204,7 +204,7 @@ class App {
             this.workspaceManager.updateWorkspaces(data.workspaces);
 
         } catch (error) {
-            console.error('加载工作区文件错误:', error);
+            console.error('加载Workspace documents错误:', error);
         }
     }
 

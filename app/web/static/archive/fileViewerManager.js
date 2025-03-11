@@ -24,7 +24,7 @@ function updateWorkspaceList(workspaces) {
     filesList.innerHTML = '';
 
     if (!workspaces || workspaces.length === 0) {
-        filesList.innerHTML = '<div class="no-files">暂无工作区文件</div>';
+        filesList.innerHTML = '<div class="no-files">暂无Workspace documents</div>';
         return;
     }
 

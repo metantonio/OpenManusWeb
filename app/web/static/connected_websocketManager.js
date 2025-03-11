@@ -83,7 +83,7 @@ export class WebSocketManager {
 
         if (this.reconnectAttempts >= this.maxReconnectAttempts) {
             console.log('达到最大重连尝试次数，停止重连');
-            document.getElementById('status-indicator').textContent = '连接已断开，请刷新页面重试';
+            document.getElementById('status-indicator').textContent = '连接已断开，请Refresh页面重试';
             return;
         }
 

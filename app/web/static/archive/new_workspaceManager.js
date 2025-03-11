@@ -1,4 +1,4 @@
-// new_workspaceManager.js - 处理工作区文件显示
+// new_workspaceManager.js - 处理Workspace documents显示
 
 export class WorkspaceManager {
     constructor(fileClickCallback) {
@@ -10,7 +10,7 @@ export class WorkspaceManager {
 
     // 初始化工作区管理器
     init() {
-        // 设置自动刷新计时器
+        // 设置自动Refresh计时器
         this.startRefreshTimer();
     }
 
@@ -24,14 +24,14 @@ export class WorkspaceManager {
 
     // 渲染工作区列表
     renderWorkspaces() {
-        // 清空容器
+        // Empty容器
         this.workspaceContainer.innerHTML = '';
 
         // 如果没有工作区，显示提示信息
         if (this.workspaces.length === 0) {
             const emptyDiv = document.createElement('div');
             emptyDiv.className = 'empty-workspace';
-            emptyDiv.textContent = '没有工作区文件';
+            emptyDiv.textContent = 'Workspace documents ';
             this.workspaceContainer.appendChild(emptyDiv);
             return;
         }
@@ -163,31 +163,31 @@ export class WorkspaceManager {
         return date.toLocaleString();
     }
 
-    // 开始自动刷新计时器
+    // 开始自动Refresh计时器
     startRefreshTimer() {
         // 清除现有计时器
         if (this.refreshTimer) {
             clearInterval(this.refreshTimer);
         }
 
-        // 设置新计时器，每5秒刷新一次
+        // 设置新计时器，每5秒Refresh一次
         this.refreshTimer = setInterval(() => {
             // 更新倒计时显示
             const refreshSpan = document.querySelector('.refresh-info span');
             if (refreshSpan) {
                 const seconds = parseInt(refreshSpan.textContent.match(/\d+/)[0] || 5);
                 if (seconds > 1) {
-                    refreshSpan.textContent = `${seconds - 1}秒后刷新`;
+                    refreshSpan.textContent = `${seconds - 1} seconds to be refreshed`;
                 } else {
-                    refreshSpan.textContent = '刷新中...';
-                    // 触发刷新
+                    refreshSpan.textContent = 'Refresh中...';
+                    // 触发Refresh
                     this.refreshWorkspaces();
                 }
             }
         }, 1000);
     }
 
-    // 刷新工作区文件
+    // RefreshWorkspace documents
     async refreshWorkspaces() {
         try {
             const response = await fetch('/api/files');
@@ -201,11 +201,11 @@ export class WorkspaceManager {
             // 重置倒计时
             const refreshSpan = document.querySelector('.refresh-info span');
             if (refreshSpan) {
-                refreshSpan.textContent = '5秒后刷新';
+                refreshSpan.textContent = 'after 5 seconds Refresh';
             }
 
         } catch (error) {
-            console.error('刷新工作区文件错误:', error);
+            console.error('RefreshWorkspace documents错误:', error);
         }
     }
 }

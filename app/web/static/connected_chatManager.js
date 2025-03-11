@@ -39,7 +39,7 @@ export class ChatManager {
             this.sendMessageCallback(message);
         }
 
-        // 清空输入框
+        // Empty输入框
         this.userInput.value = '';
         this.adjustTextareaHeight();
     }

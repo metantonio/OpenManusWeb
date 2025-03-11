@@ -140,8 +140,8 @@ python web_run.py
 然后打开浏览器，访问`http://localhost:8000`即可使用Web界面。Web界面提供以下功能：
 
 - 通过类聊天界面与OpenManus交互
-- 实时监控AI思考过程
-- 查看和访问工作区文件
+- 实时监控AI Thinking
+- 查看和访问Workspace documents
 - 直观地查看执行进度
 
 如需体验开发中版本，可运行：

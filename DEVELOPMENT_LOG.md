@@ -103,7 +103,7 @@ OpenManus是一个开源的AI助手项目，旨在提供类似于Manus的功能�
 为了实现类似Manus的日志呈现方式，我们采用以下方案：
 
 1. **任务跟踪系统**：
-   - 创建ThinkingTracker类，记录AI思考过程的关键步骤
+   - 创建ThinkingTracker类，记录AI Thinking的关键步骤
    - 将复杂的后台处理过程转化为简洁的用户友好描述
    - 支持任务进度百分比估计（可选）
 

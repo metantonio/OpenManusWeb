@@ -33,7 +33,7 @@ class TaskStatus(Enum):
 
 
 class ThinkingTracker:
-    """思考跟踪器，用于记录和管理AI思考过程"""
+    """思考跟踪器，用于记录和管理AI Thinking"""
 
     # 类变量，存储所有会话的思考步骤
     _session_steps: Dict[str, List[ThinkingStep]] = {}
@@ -374,7 +374,7 @@ def generate_thinking_steps(
     task_description: str = "",
     show_communication: bool = True,
 ) -> None:
-    """生成一系列思考步骤，用于模拟AI思考过程"""
+    """生成一系列思考步骤，用于模拟AI Thinking"""
     steps = TASK_TYPE_STEPS.get(task_type, RESEARCH_STEPS)
 
     # 如果有描述，添加更具体的步骤
