@@ -41,7 +41,7 @@ export class WebSocketManager {
     // 处理连接打开
     handleOpen(event) {
         console.log('WebSocket连接已建立');
-        document.getElementById('status-indicator').textContent = '已连接到服务器...';
+        document.getElementById('status-indicator').textContent = 'Connected to server..';
         // 重置重连尝试次数
         this.reconnectAttempts = 0;
     }

@@ -16,7 +16,7 @@ export function connectWebSocket(sessionId) {
 
         ws.onopen = function() {
             console.log('WebSocket连接已建立');
-            document.getElementById('status-indicator').textContent = '已连接到服务器...';
+            document.getElementById('status-indicator').textContent = 'Connected to server..';
         };
 
         ws.onmessage = function(event) {
