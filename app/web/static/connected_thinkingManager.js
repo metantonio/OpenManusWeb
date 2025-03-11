@@ -96,7 +96,7 @@ export class ThinkingManager {
             if (step.details) {
                 detailsElement.textContent = step.details;
             } else {
-                detailsElement.textContent = '(无详细内容)';
+                detailsElement.textContent = '(No details)';
             }
 
             contentDiv.appendChild(headerDiv);
@@ -107,7 +107,7 @@ export class ThinkingManager {
             // 创建详情按钮
             const detailsButton = document.createElement('button');
             detailsButton.className = 'btn-details';
-            detailsButton.textContent = '显示详情 ▼';
+            detailsButton.textContent = 'Show details ▼';
             contentDiv.appendChild(detailsButton);
 
             // 创建详情内容（初始隐藏）
@@ -121,10 +121,10 @@ export class ThinkingManager {
             detailsButton.addEventListener('click', () => {
                 if (detailsDiv.style.display === 'none') {
                     detailsDiv.style.display = 'block';
-                    detailsButton.textContent = '隐藏详情 ▲';
+                    detailsButton.textContent = 'Hide details ▲';
                 } else {
                     detailsDiv.style.display = 'none';
-                    detailsButton.textContent = '显示详情 ▼';
+                    detailsButton.textContent = 'Show details ▼';
                 }
             });
         }
