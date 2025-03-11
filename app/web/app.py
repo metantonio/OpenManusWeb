@@ -160,7 +160,7 @@ async def stop_processing(session_id: str):
         cancel_events[session_id].set()
 
     active_sessions[session_id]["status"] = "stopped"
-    active_sessions[session_id]["result"] = "处理已被用户停止"
+    active_sessions[session_id]["result"] = "Processing has been stopped by the user"
 
     return {"status": "stopped"}
 
@@ -382,7 +382,7 @@ class LLMCommunicationTracker:
             if prompt:
                 ThinkingTracker.add_communication(
                     session_id,
-                    "发送到LLM",
+                    "Send to LLM",
                     prompt[:500] + ("..." if len(prompt) > 500 else ""),
                 )
 
@@ -416,7 +416,7 @@ from app.agent.llm_wrapper import LLMCallbackWrapper
 # 修改文件API，支持工作区目录
 @app.get("/api/files")
 async def get_generated_files():
-    """获取所有工作区目录和文件"""
+    """Get all workspace directories and files"""
     result = []
 
     # 获取所有工作区目录
@@ -475,7 +475,7 @@ async def get_generated_files():
 # 新增日志文件接口
 @app.get("/api/logs")
 async def get_system_logs(limit: int = 10):
-    """获取系统日志列表"""
+    """Get system log list"""
     log_files = []
     for entry in os.scandir(LOGS_DIR):
         if entry.is_file() and entry.name.endswith(".log"):
@@ -493,7 +493,7 @@ async def get_system_logs(limit: int = 10):
 
 @app.get("/api/logs/{log_name}")
 async def get_log_content(log_name: str, parsed: bool = False):
-    """获取特定日志文件内容"""
+    """Get the contents of a specific log file"""
     log_path = LOGS_DIR / log_name
     # 安全检查
     if not log_path.exists() or not log_path.is_file():
@@ -514,13 +514,13 @@ async def get_log_content(log_name: str, parsed: bool = False):
 
 @app.get("/api/logs_parsed")
 async def get_parsed_logs(limit: int = 10):
-    """获取解析后的日志信息列表"""
+    """Get the parsed log information list"""
     return {"logs": get_all_logs_info(str(LOGS_DIR), limit)}
 
 
 @app.get("/api/logs_parsed/{log_name}")
 async def get_parsed_log(log_name: str):
-    """获取特定日志文件的解析信息"""
+    """Get parsed information for a specific log file"""
     log_path = LOGS_DIR / log_name
     # 安全检查
     if not log_path.exists() or not log_path.is_file():
@@ -533,13 +533,13 @@ async def get_parsed_log(log_name: str):
 
 @app.get("/api/latest_log")
 async def get_latest_log():
-    """获取最新日志文件的解析信息"""
+    """Get the parsing information of the latest log file"""
     return get_latest_log_info(str(LOGS_DIR))
 
 
 @app.get("/api/files/{file_path:path}")
 async def get_file_content(file_path: str):
-    """获取特定文件的内容"""
+    """Get the contents of a specific file"""
     # 安全检查，防止目录遍历攻击
     root_dir = Path(__file__).parent.parent.parent
     full_path = root_dir / file_path
@@ -603,7 +603,7 @@ async def process_prompt(session_id: str, prompt: str):
     active_log_monitors[session_id] = log_monitor
 
     async def sync_logs():
-        """定期从LogFileMonitor获取日志并实时更新到ThinkingTracker"""
+        """Get logs from LogFileMonitor and update them to ThinkingTracker in real time"""
         last_count = 0
         try:
             while True:
@@ -628,7 +628,7 @@ async def process_prompt(session_id: str, prompt: str):
                 # 减少轮询间隔，提高实时性
                 await asyncio.sleep(0.1)  # 每0.1秒检查一次
         except Exception as e:
-            print(f"同步日志时发生错误: {str(e)}")
+            print(f"An error occurred while synchronizing the logs: {str(e)}")
 
     # 启动日志同步任务
     sync_task = asyncio.create_task(sync_logs())
@@ -642,16 +642,16 @@ async def process_prompt(session_id: str, prompt: str):
         with capture_session_logs(session_id) as log:
             # 初始化思考跟踪
             ThinkingTracker.start_tracking(session_id)
-            ThinkingTracker.add_thinking_step(session_id, "开始处理用户请求")
+            ThinkingTracker.add_thinking_step(session_id, "Start processing user requests")
             ThinkingTracker.add_thinking_step(
-                session_id, f"工作区目录: {workspace_dir.name}"
+                session_id, f"workspace directory: {workspace_dir.name}"
             )
 
             # 直接记录用户输入的prompt
-            ThinkingTracker.add_communication(session_id, "用户输入", prompt)
+            ThinkingTracker.add_communication(session_id, "User input", prompt)
 
             # 初始化代理和任务流程
-            ThinkingTracker.add_thinking_step(session_id, "初始化AI代理和任务流程")
+            ThinkingTracker.add_thinking_step(session_id, "Initialize AI agent and task flow")
             agent = Manus()
 
             # 使用包装器包装LLM
@@ -671,9 +671,9 @@ async def process_prompt(session_id: str, prompt: str):
                         prompt_content = str(data)
 
                     # 记录通信内容
-                    print(f"发送到LLM: {prompt_content[:100]}...")
+                    print(f"Send to LLM: {prompt_content[:100]}...")
                     ThinkingTracker.add_communication(
-                        session_id, "发送到LLM", prompt_content
+                        session_id, "Send to LLM", prompt_content
                     )
 
                 def on_after_request(data):
@@ -716,7 +716,7 @@ async def process_prompt(session_id: str, prompt: str):
 
             # 记录处理开始
             ThinkingTracker.add_thinking_step(
-                session_id, f"分析用户请求: {prompt[:50]}{'...' if len(prompt) > 50 else ''}"
+                session_id, f"Analyze user requests: {prompt[:50]}{'...' if len(prompt) > 50 else ''}"
             )
             log.info(f"开始执行: {prompt[:50]}{'...' if len(prompt) > 50 else ''}")
 
@@ -726,7 +726,7 @@ async def process_prompt(session_id: str, prompt: str):
                 log.warning("处理已被用户取消")
                 ThinkingTracker.mark_stopped(session_id)
                 active_sessions[session_id]["status"] = "stopped"
-                active_sessions[session_id]["result"] = "处理已被用户停止"
+                active_sessions[session_id]["result"] = "Processing has been stopped by the user"
                 return
 
             # 执行前检查工作区已有文件
@@ -735,8 +735,8 @@ async def process_prompt(session_id: str, prompt: str):
                 existing_files.update(f.name for f in workspace_dir.glob(ext))
 
             # 跟踪计划创建过程
-            ThinkingTracker.add_thinking_step(session_id, "创建任务执行计划")
-            ThinkingTracker.add_thinking_step(session_id, "开始执行任务计划")
+            ThinkingTracker.add_thinking_step(session_id, "Create a task execution plan")
+            ThinkingTracker.add_thinking_step(session_id, "Start executing the task plan")
 
             # 获取取消事件以传递给flow.execute
             cancel_event = cancel_events.get(session_id)
@@ -746,7 +746,7 @@ async def process_prompt(session_id: str, prompt: str):
                 log.warning("处理已被用户取消")
                 ThinkingTracker.mark_stopped(session_id)
                 active_sessions[session_id]["status"] = "stopped"
-                active_sessions[session_id]["result"] = "处理已被用户停止"
+                active_sessions[session_id]["result"] = "Processing has been stopped by the user"
                 return
 
             # 执行实际处理 - 传递job_id和cancel_event给flow.execute方法
@@ -784,14 +784,14 @@ async def process_prompt(session_id: str, prompt: str):
         print("处理已取消")
         ThinkingTracker.mark_stopped(session_id)
         active_sessions[session_id]["status"] = "stopped"
-        active_sessions[session_id]["result"] = "处理已被取消"
+        active_sessions[session_id]["result"] = "Processing has been canceled"
     except Exception as e:
         # 处理错误情况
         error_msg = f"处理出错: {str(e)}"
         print(error_msg)
-        ThinkingTracker.add_error(session_id, f"处理遇到错误: {str(e)}")
+        ThinkingTracker.add_error(session_id, f"Handle encountered errors: {str(e)}")
         active_sessions[session_id]["status"] = "error"
-        active_sessions[session_id]["result"] = f"发生错误: {str(e)}"
+        active_sessions[session_id]["result"] = f"An error occurred: {str(e)}"
     finally:
         # 恢复原始工作目录
         os.chdir(original_cwd)

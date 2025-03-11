@@ -20,7 +20,7 @@ Enjoy your own agent with OpenManus!
 
 We're also excited to introduce [OpenManus-RL](https://github.com/OpenManus/OpenManus-RL), an open-source project dedicated to reinforcement learning (RL)- based (such as GRPO) tuning methods for LLM agents, developed collaboratively by researchers from UIUC and OpenManus.
 
-## Web Interface Preview
+## Web Interface Preview - English Version
 
 ![OpenManus Web Interface](assets/interface.png)
 

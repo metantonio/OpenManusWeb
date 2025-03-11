@@ -179,9 +179,9 @@ class App {
                 throw new Error(`API错误: ${response.status}`);
             }
 
-            console.log('处理已停止');
-            this.chatManager.addSystemMessage('处理已停止');
-            document.getElementById('status-indicator').textContent = '处理已停止';
+            console.log('Processing has stopped');
+            this.chatManager.addSystemMessage('Processing has stopped');
+            document.getElementById('status-indicator').textContent = 'Processing has stopped';
             document.getElementById('send-btn').disabled = false;
             document.getElementById('stop-btn').disabled = true;
             this.isProcessing = false;

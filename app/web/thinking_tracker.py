@@ -112,7 +112,7 @@ class ThinkingTracker:
 
         Args:
             session_id: 会话ID
-            direction: 通信方向，如 "发送到LLM"、"从LLM接收"
+            direction: 通信方向，如 "Send to LLM"、"从LLM接收"
             content: 通信内容
         """
         message = f"{direction}通信"
@@ -403,7 +403,7 @@ def generate_thinking_steps(
         # 模拟与LLM的通信
         if show_communication:
             # 模拟向LLM发送请求
-            ThinkingTracker.add_communication(session_id, "发送到LLM", f"请帮我{step}...")
+            ThinkingTracker.add_communication(session_id, "Send to LLM", f"请帮我{step}...")
 
             # 模拟接收LLM回复
             ThinkingTracker.add_communication(

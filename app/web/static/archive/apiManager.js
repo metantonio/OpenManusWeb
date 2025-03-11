@@ -79,7 +79,7 @@ export async function pollResults(sessionId) {
                 processingRequest = false;
                 return;
             } else if (data.status === 'stopped') {
-                document.getElementById('status-indicator').textContent = '处理已停止';
+                document.getElementById('status-indicator').textContent = 'Processing has stopped';
                 document.getElementById('send-btn').disabled = false;
                 document.getElementById('stop-btn').disabled = true;
                 processingRequest = false;
@@ -151,7 +151,7 @@ export function updateThinkingSteps(steps) {
             detailsElement.className = 'communication-details';
             detailsElement.style.display = 'none';
 
-            if (step.message.includes("发送到LLM")) {
+            if (step.message.includes("Send to LLM")) {
                 detailsElement.innerHTML = `<div class="prompt-wrapper">${formatCommunicationContent(step.details)}</div>`;
             } else {
                 detailsElement.innerHTML = `<div class="response-wrapper">${formatCommunicationContent(step.details)}</div>`;

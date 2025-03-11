@@ -597,7 +597,7 @@ pre {
     background-color: #e8f5e9;
 }
 
-.thinking-step.communication .communication-header:has(span.communication-direction:contains('发送到LLM')) {
+.thinking-step.communication .communication-header:has(span.communication-direction:contains('Send to LLM')) {
     border-left-color: var(--log-info);
     background-color: #e3f2fd;
 }

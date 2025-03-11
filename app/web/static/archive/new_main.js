@@ -161,10 +161,10 @@ class App {
                 throw new Error(`API错误: ${response.status}`);
             }
 
-            console.log('处理已停止');
+            console.log('Processing has stopped');
             this.thinkingManager.addThinkingStep({
                 type: 'system',
-                content: '处理已被用户停止'
+                content: 'Processing has been stopped by the user'
             });
 
         } catch (error) {

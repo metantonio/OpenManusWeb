@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.ok) {
-                    addLog('处理已停止', 'warning');
+                    addLog('Processing has stopped', 'warning');
                 }
             } catch (error) {
                 console.error('停止请求错误:', error);
