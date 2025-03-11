@@ -133,6 +133,12 @@ or
 python web_run.py
 ```
 
+sometimes you will need permissions, depending on machine you should do:
+
+```bash
+sudo python web_run.py
+```
+
 
 ## Quick Start terminal
 
