@@ -57,7 +57,13 @@ cd OpenManus
 pip install -r requirements.txt
 ```
 
-### Method 2: Using uv (Recommended)
+4. Install Playright:
+
+```bash
+playright install
+```
+
+### Method 2: Using uv 
 
 1. Install uv (A fast Python package installer and resolver):
 
