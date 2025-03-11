@@ -82,8 +82,8 @@ export class WebSocketManager {
         }
 
         if (this.reconnectAttempts >= this.maxReconnectAttempts) {
-            console.log('达到最大重连尝试次数，停止重连');
-            document.getElementById('status-indicator').textContent = '连接已断开，请Refresh页面重试';
+            console.log('The connection has been disconnected, please refresh the page and try again');
+            document.getElementById('status-indicator').textContent = 'The connection has been disconnected, please refresh the page and try again';
             return;
         }
 
@@ -91,7 +91,7 @@ export class WebSocketManager {
         const delay = this.reconnectDelay * Math.pow(2, this.reconnectAttempts - 1); // 指数退避
 
         console.log(`尝试重连 (${this.reconnectAttempts}/${this.maxReconnectAttempts})，延迟 ${delay}ms`);
-        document.getElementById('status-indicator').textContent = `连接已断开，正在尝试重连 (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`;
+        document.getElementById('status-indicator').textContent = `The connection has been lost, trying to reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`;
 
         setTimeout(() => {
             if (this.sessionId) {
